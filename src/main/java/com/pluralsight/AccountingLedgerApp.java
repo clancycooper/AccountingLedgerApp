@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import static com.pluralsight.ReadWrite.*;
+
 /*Welcome to the Main Class for my Accounting Ledger App
 Here is where the Screens of my App will live
 The Home screen will allow users to:
@@ -25,7 +27,7 @@ The Reports Screen will allow users to:
  */
 public class AccountingLedgerApp {
     public static void main(String[] args) {
-
+    readTransactions();
     }
 
     public static void homeScreen() {

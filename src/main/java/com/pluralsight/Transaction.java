@@ -1,38 +1,36 @@
 package com.pluralsight;
-import java.sql.Time;
-import java.util.Date;
 
 /*This is the Transaction class
 Serves as a way to get and set date|time|description|vendor|amount
  */
 public class Transaction {
 
-    private Date date;
-    private Time time;
+    private String date = "";
+    private String time = "";
     private String desc = "";
     private String vendor = "";
     private float amount = 0.00F;
 
-    public Transaction(Date date, Time time, String desc, String vendor, float amount) {
-        this.date = new Date(date.getTime());
-        this.time = new Time(time.getTime());
+    public Transaction(String date, String time, String desc, String vendor, float amount) {
+        this.date = date;
+        this.time = date;
         this.desc = desc;
         this.vendor = vendor;
         this.amount = amount;
     }
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
