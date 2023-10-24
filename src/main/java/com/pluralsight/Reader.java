@@ -9,7 +9,7 @@ import static com.pluralsight.AccountingLedgerApp.homeScreen;
 Here is where my buffered/file readers are stored
 When launched, my main method will start the readTransactions method automatically
  */
-public class Writer {
+public class Reader {
     public static HashMap<String, Transaction> transactionList = new HashMap<>();
     public static void readTransactions() {
         try {
@@ -27,7 +27,7 @@ public class Writer {
                     String vendor = inventory[3];
                     float amount = Float.parseFloat(inventory[4]);
                     Transaction newTransaction = new Transaction(date, time, desc, vendor, amount);
-                    transactionList.put(date, newTransaction);
+                    transactionList.put(date + time, newTransaction);
                 }
             }
             homeScreen();

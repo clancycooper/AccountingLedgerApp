@@ -13,7 +13,7 @@ public class Transaction {
 
     public Transaction(String date, String time, String desc, String vendor, float amount) {
         this.date = date;
-        this.time = date;
+        this.time = time;
         this.desc = desc;
         this.vendor = vendor;
         this.amount = amount;
