@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import static com.pluralsight.HomeFunctions.*;
-import static com.pluralsight.LedgerFunctions.displayAll;
+import static com.pluralsight.LedgerFunctions.*;
 import static com.pluralsight.Reader.readTransactions;
 
 /*Welcome to the Main Class for my Accounting Ledger App
@@ -56,9 +56,9 @@ public class AccountingLedgerApp {
         String clancysStatements = scanner.nextLine().toUpperCase().trim();
         switch(clancysStatements) {
             case "A": displayAll();
-            case "D": //Display deposits only, newest first
-            case "P": // Display payments only, newest first
-            case "R": //View Reports Screen
+            case "D": displayDeposits();
+            case "P": displayPayments();
+            case "R": reportsScreen();
         }
     }
 
