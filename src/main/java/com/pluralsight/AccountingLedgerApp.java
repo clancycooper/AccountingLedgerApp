@@ -41,9 +41,9 @@ public class AccountingLedgerApp {
         String clancysChoice = scanner.nextLine().toUpperCase().trim();
         switch(clancysChoice) {
             case "D": addDeposit();
-            case "P": //Make a Payment
+            case "P": makePayment();
             case "L": //View Ledger Screen
-            case "X": //Exit System
+            case "X": System.exit(0);
             default:
                 System.out.println("I'm having a hard time finding what you're looking for. Please try again, make sure your response is D, P, L, or X.");
         }
