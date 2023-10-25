@@ -27,7 +27,7 @@ The Reports Screen will allow users to:
     3) Year to Date
     4) Previous Year
     5) Search by Vendor: Prompt user for vendor name and display all entries for that vendor
-    0) Back: Go back to Report page
+           - Back: Go back to Report page
     H) Return Home
  */
 public class AccountingLedgerApp {
@@ -50,7 +50,7 @@ public class AccountingLedgerApp {
         }
     }
 
-    public static void ledgerScreen() {
+    public static void ledgerScreen() throws IOException {
         System.out.println("Welcome to your Ledger, which transaction history would you like to view?");
         System.out.println(" A) Display all transactions \n D) Display all deposits \n P) Display payment history \n R) Search my Reports");
         String clancysStatements = scanner.nextLine().toUpperCase().trim();
@@ -59,11 +59,25 @@ public class AccountingLedgerApp {
             case "D": displayDeposits();
             case "P": displayPayments();
             case "R": reportsScreen();
+            default:
+                System.out.println("I'm having a hard time finding what you're looking for. Please try again, make sure your response is A, D, P, or R.");
         }
     }
 
-    public static void reportsScreen() {
-
+    public static void reportsScreen() throws IOException {
+        System.out.println("Welcome to your Reports, how would you like to view your statements?");
+        System.out.println(" 1) Month to Date \n 2) Previous Month \n 3) Year to Date \n 4) Previous Year \n 5) Search by Vendor \n 0) Return Home");
+        int clancysReports = scanner.nextInt();
+        switch(clancysReports) {
+            case 1: //Month to Date
+            case 2: //Previous Month
+            case 3: //Year to Date
+            case 4: //Previous Year
+            case 5: //Search by Vendor
+            case 0: homeScreen();
+            default:
+                System.out.println("I'm having a hard time finding what you're looking for. Please try again, make sure your response is 1, 2, 3, 4, 5, or 0");
+        }
     }
 }
 

@@ -6,7 +6,7 @@ import java.util.*;
 import static com.pluralsight.AccountingLedgerApp.homeScreen;
 
 /*This is the Reader Class
-Here is where my buffered/file readers are stored
+Here is where my buffered/file reader is stored
 When launched, my main method will start the readTransactions method automatically
  */
 public class Reader {

@@ -11,9 +11,10 @@ import java.util.*;
 
 import static com.pluralsight.AccountingLedgerApp.homeScreen;
 
-/*This is my HomeFunctions class, where my methods for my homeScreen will exist
-addDeposits method - Allows user to enter new deposit into transactions.csv
-makePayment method - Allows user to notate payments from their account into transactions.csv
+/*This is my HomeFunctions class
+Here you'll find the following methods:
+addDeposits(); - Allows user to enter new deposit into transactions.csv
+makePayment(); - Allows user to notate payments from their account into transactions.csv
  */
 
 public class HomeFunctions {

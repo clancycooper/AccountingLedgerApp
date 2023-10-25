@@ -6,7 +6,10 @@ import java.util.Scanner;
 import static com.pluralsight.Reader.transactionList;
 
 /*This is my LedgerFunctions class
-Allows user to displayAll transactions, displayDeposits only, or displayPayments only.
+In this class you'll find the following functions:
+displayAll();
+displayDeposits();
+displayPayments();
  */
 
 public class LedgerFunctions {
