@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 import static com.pluralsight.HomeFunctions.*;
 import static com.pluralsight.LedgerFunctions.*;
-import static com.pluralsight.ReportsFunctions.monthToDate;
-import static com.pluralsight.ReportsFunctions.previousMonth;
+import static com.pluralsight.Reader.readTransactions;
+import static com.pluralsight.ReportsFunctions.*;
 
 /*Welcome to the Main Class for my Accounting Ledger App
 Here is where the Screens of my App will live
@@ -34,7 +34,7 @@ The Reports Screen will allow users to:
 public class AccountingLedgerApp {
     public static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-    Reader.readTransactions();
+    readTransactions();
     }
 
     public static void homeScreen() throws IOException {
@@ -48,6 +48,7 @@ public class AccountingLedgerApp {
             case "X": System.exit(0);
             default:
                 System.out.println("I'm having a hard time finding what you're looking for. Please try again, make sure your response is D, P, L, or X.");
+                homeScreen();
         }
     }
 
@@ -62,6 +63,7 @@ public class AccountingLedgerApp {
             case "R": reportsScreen();
             default:
                 System.out.println("I'm having a hard time finding what you're looking for. Please try again, make sure your response is A, D, P, or R.");
+                ledgerScreen();
         }
     }
 
@@ -72,12 +74,13 @@ public class AccountingLedgerApp {
         switch(clancysReports) {
             case 1: monthToDate();
             case 2: previousMonth();
-            case 3: //Year to Date
+            case 3: yearToDate();
             case 4: //Previous Year
             case 5: //Search by Vendor
             case 0: homeScreen();
             default:
                 System.out.println("I'm having a hard time finding what you're looking for. Please try again, make sure your response is 1, 2, 3, 4, 5, or 0");
+                reportsScreen();
         }
     }
 }

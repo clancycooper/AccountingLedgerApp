@@ -42,7 +42,7 @@ public class ReportsFunctions {
     }
 
     public static void previousMonth() throws IOException {
-        System.out.println("Here are your statements from the Previous Month");
+        System.out.println("Here are your statements from the Previous Month:");
         for (Map.Entry<String, Transaction> dateSet : transactionList.entrySet()) {
             String[] splitDates = dateSet.getValue().getDate().split("-");
             LocalDate today = LocalDate.now();
@@ -66,6 +66,27 @@ public class ReportsFunctions {
         } else {
             System.out.println("Sorry, didn't catch that. Press 'X' to return to the Reports Menu");
             monthToDate();
+        }
+    }
+
+    public static void yearToDate() throws IOException {
+        System.out.println("Here are your Year to Date statements:");
+        for(Map.Entry<String, Transaction> dateSet : transactionList.entrySet()) {
+            String[] splitDates = dateSet.getValue().getDate().split("-");
+            LocalDate today = LocalDate.now();
+            int thisYear = today.getYear();
+            if((Integer.parseInt(splitDates[0])) == ((thisYear))) {
+                System.out.printf("Date: %S | Time: %S | Description: %S | Vendor: %S | Amount $%.2f\n", dateSet.getValue().getDate(), dateSet.getValue().getTime(), dateSet.getValue().getDesc(), dateSet.getValue().getVendor(), dateSet.getValue().getAmount());
+            }
+        }
+        System.out.println("Press 'X' when you're ready to return to the Reports menu");
+        String exit = scanner.nextLine().toUpperCase().trim();
+        if (exit.equals("X")) {
+            System.out.println("Redirecting to Reports menu...");
+            reportsScreen();
+        } else {
+            System.out.println("Sorry, didn't catch that. Press 'X' to return to the Reports Menu");
+            yearToDate();
         }
     }
 }
