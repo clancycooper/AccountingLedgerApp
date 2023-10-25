@@ -71,11 +71,11 @@ public class ReportsFunctions {
 
     public static void yearToDate() throws IOException {
         System.out.println("Here are your Year to Date statements:");
-        for(Map.Entry<String, Transaction> dateSet : transactionList.entrySet()) {
+        for (Map.Entry<String, Transaction> dateSet : transactionList.entrySet()) {
             String[] splitDates = dateSet.getValue().getDate().split("-");
             LocalDate today = LocalDate.now();
             int thisYear = today.getYear();
-            if((Integer.parseInt(splitDates[0])) == ((thisYear))) {
+            if ((Integer.parseInt(splitDates[0])) == ((thisYear))) {
                 System.out.printf("Date: %S | Time: %S | Description: %S | Vendor: %S | Amount $%.2f\n", dateSet.getValue().getDate(), dateSet.getValue().getTime(), dateSet.getValue().getDesc(), dateSet.getValue().getVendor(), dateSet.getValue().getAmount());
             }
         }
@@ -87,6 +87,28 @@ public class ReportsFunctions {
         } else {
             System.out.println("Sorry, didn't catch that. Press 'X' to return to the Reports Menu");
             yearToDate();
+        }
+    }
+
+    public static void previousYear() throws IOException {
+        System.out.println("Here are your Previous Year statements:");
+        for (Map.Entry<String, Transaction> dateSet : transactionList.entrySet()) {
+            String[] splitDates = dateSet.getValue().getDate().split("-");
+            LocalDate today = LocalDate.now();
+            int previousYear = today.getYear() - 1;
+            if ((Integer.parseInt(splitDates[0])) == ((previousYear))) {
+                System.out.printf("Date: %S | Time: %S | Description: %S | Vendor: %S | Amount $%.2f\n", dateSet.getValue().getDate(), dateSet.getValue().getTime(), dateSet.getValue().getDesc(), dateSet.getValue().getVendor(), dateSet.getValue().getAmount());
+            }
+        }
+        scanner.nextLine();
+        System.out.println("Press 'X' when you're ready to return to the Reports menu");
+        String exit = scanner.nextLine().toUpperCase().trim();
+        if (exit.equals("X")) {
+            System.out.println("Redirecting to Reports menu...");
+            reportsScreen();
+        } else {
+            System.out.println("Sorry, didn't catch that. Press 'X' to return to the Reports Menu");
+            previousYear();
         }
     }
 }

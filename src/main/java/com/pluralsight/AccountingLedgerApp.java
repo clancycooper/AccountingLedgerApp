@@ -75,7 +75,7 @@ public class AccountingLedgerApp {
             case 1: monthToDate();
             case 2: previousMonth();
             case 3: yearToDate();
-            case 4: //Previous Year
+            case 4: previousYear();
             case 5: //Search by Vendor
             case 0: homeScreen();
             default:
