@@ -24,19 +24,48 @@ public class ReportsFunctions {
         for (Map.Entry<String, Transaction> dateSet : transactionList.entrySet()) {
             String[] splitDates = dateSet.getValue().getDate().split("-");
             LocalDate today = LocalDate.now();
-            if((Integer.parseInt(splitDates[1]) == today.getMonthValue()) && (Integer.parseInt(splitDates[2]) <= today.getDayOfMonth())) {
+            int thisMonth = today.getMonthValue();
+            int dayOfMonth = today.getDayOfMonth();
+            if ((Integer.parseInt(splitDates[1]) == thisMonth) && (Integer.parseInt(splitDates[2]) <= dayOfMonth)) {
                 System.out.printf("Date: %S | Time: %S | Description: %S | Vendor: %S | Amount $%.2f\n", dateSet.getValue().getDate(), dateSet.getValue().getTime(), dateSet.getValue().getDesc(), dateSet.getValue().getVendor(), dateSet.getValue().getAmount());
             }
         }
         System.out.println("Press 'X' when you're ready to return to the Reports menu");
         String exit = scanner.nextLine().toUpperCase().trim();
-        switch(exit) {
-            case "X":
-                System.out.println("Redirecting to Reports menu...");
-                reportsScreen();
-            default:
-                System.out.println("Sorry, didn't catch that. Press 'X' to return to the Reports Menu");
-                monthToDate();
+        if (exit.equals("X")) {
+            System.out.println("Redirecting to Reports menu...");
+            reportsScreen();
+        } else {
+            System.out.println("Sorry, didn't catch that. Press 'X' to return to the Reports Menu");
+            monthToDate();
+        }
+    }
+
+    public static void previousMonth() throws IOException {
+        System.out.println("Here are your statements from the Previous Month");
+        for (Map.Entry<String, Transaction> dateSet : transactionList.entrySet()) {
+            String[] splitDates = dateSet.getValue().getDate().split("-");
+            LocalDate today = LocalDate.now();
+            int thisMonth = today.getMonthValue();
+            int previousMonth;
+            if ((Integer.parseInt(splitDates[1])) == 1) {
+                previousMonth = 12;
+            } else {
+                previousMonth = thisMonth - 1;
+            }
+            if ((Integer.parseInt(splitDates[1]) == previousMonth)) {
+                System.out.printf("Date: %S | Time: %S | Description: %S | Vendor: %S | Amount $%.2f\n", dateSet.getValue().getDate(), dateSet.getValue().getTime(), dateSet.getValue().getDesc(), dateSet.getValue().getVendor(), dateSet.getValue().getAmount());
+            }
+        }
+        scanner.nextLine();
+        System.out.println("Press 'X' when you're ready to return to the Reports menu");
+        String exit = scanner.nextLine().toUpperCase().trim();
+        if (exit.equals("X")) {
+            System.out.println("Redirecting to Reports menu...");
+            reportsScreen();
+        } else {
+            System.out.println("Sorry, didn't catch that. Press 'X' to return to the Reports Menu");
+            monthToDate();
         }
     }
 }

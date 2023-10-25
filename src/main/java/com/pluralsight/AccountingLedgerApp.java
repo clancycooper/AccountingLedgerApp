@@ -6,6 +6,7 @@ import java.util.Scanner;
 import static com.pluralsight.HomeFunctions.*;
 import static com.pluralsight.LedgerFunctions.*;
 import static com.pluralsight.ReportsFunctions.monthToDate;
+import static com.pluralsight.ReportsFunctions.previousMonth;
 
 /*Welcome to the Main Class for my Accounting Ledger App
 Here is where the Screens of my App will live
@@ -70,7 +71,7 @@ public class AccountingLedgerApp {
         int clancysReports = scanner.nextInt();
         switch(clancysReports) {
             case 1: monthToDate();
-            case 2: //Previous Month
+            case 2: previousMonth();
             case 3: //Year to Date
             case 4: //Previous Year
             case 5: //Search by Vendor
