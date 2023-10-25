@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import static com.pluralsight.HomeFunctions.*;
 import static com.pluralsight.LedgerFunctions.*;
-import static com.pluralsight.Reader.readTransactions;
+import static com.pluralsight.ReportsFunctions.monthToDate;
 
 /*Welcome to the Main Class for my Accounting Ledger App
 Here is where the Screens of my App will live
@@ -33,7 +33,7 @@ The Reports Screen will allow users to:
 public class AccountingLedgerApp {
     public static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-    readTransactions();
+    Reader.readTransactions();
     }
 
     public static void homeScreen() throws IOException {
@@ -69,7 +69,7 @@ public class AccountingLedgerApp {
         System.out.println(" 1) Month to Date \n 2) Previous Month \n 3) Year to Date \n 4) Previous Year \n 5) Search by Vendor \n 0) Return Home");
         int clancysReports = scanner.nextInt();
         switch(clancysReports) {
-            case 1: //Month to Date
+            case 1: monthToDate();
             case 2: //Previous Month
             case 3: //Year to Date
             case 4: //Previous Year

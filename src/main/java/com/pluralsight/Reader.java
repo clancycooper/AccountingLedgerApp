@@ -19,13 +19,13 @@ public class Reader {
             String csv;
             //While loop for reading and adding products to Hashmap
             while ((csv = bufReader.readLine()) != null) {
-                String[] inventory = csv.split("\\|");
-                if(!inventory[0].contains("date")) {
-                    String date = inventory[0];
-                    String time = inventory[1];
-                    String desc = inventory[2];
-                    String vendor = inventory[3];
-                    float amount = Float.parseFloat(inventory[4]);
+                String[] transactionLedger = csv.split("\\|");
+                if(!transactionLedger[0].contains("date")) {
+                    String date = transactionLedger[0];
+                    String time = transactionLedger[1];
+                    String desc = transactionLedger[2];
+                    String vendor = transactionLedger[3];
+                    float amount = Float.parseFloat(transactionLedger[4]);
                     Transaction newTransaction = new Transaction(date, time, desc, vendor, amount);
                     transactionList.put(date + time, newTransaction);
                 }
