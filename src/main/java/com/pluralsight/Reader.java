@@ -2,7 +2,6 @@ package com.pluralsight;
 
 import java.io.*;
 import java.util.*;
-
 import static com.pluralsight.AccountingLedgerApp.homeScreen;
 
 /*This is the Reader Class
@@ -11,6 +10,7 @@ When launched, my main method will start the readTransactions method automatical
  */
 public class Reader {
     public static HashMap<String, Transaction> transactionList = new HashMap<>();
+
     public static void readTransactions() {
         try {
             //Declaring readers/String

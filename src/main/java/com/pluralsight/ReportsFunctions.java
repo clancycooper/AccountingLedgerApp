@@ -27,10 +27,11 @@ public class ReportsFunctions {
             int thisMonth = today.getMonthValue();
             int dayOfMonth = today.getDayOfMonth();
             if ((Integer.parseInt(splitDates[1]) == thisMonth) && (Integer.parseInt(splitDates[2]) <= dayOfMonth)) {
-                System.out.printf("Date: %S | Time: %S | Description: %S | Vendor: %S | Amount $%.2f\n", dateSet.getValue().getDate(), dateSet.getValue().getTime(), dateSet.getValue().getDesc(), dateSet.getValue().getVendor(), dateSet.getValue().getAmount());
+                System.out.println(dateSet.getValue().toString());
             }
         }
         System.out.println("Press 'X' when you're ready to return to the Reports menu");
+        scanner.nextLine();
         String exit = scanner.nextLine().toUpperCase().trim();
         if (exit.equals("X")) {
             System.out.println("Redirecting to Reports menu...");
@@ -54,7 +55,7 @@ public class ReportsFunctions {
                 previousMonth = thisMonth - 1;
             }
             if ((Integer.parseInt(splitDates[1]) == previousMonth)) {
-                System.out.printf("Date: %S | Time: %S | Description: %S | Vendor: %S | Amount $%.2f\n", dateSet.getValue().getDate(), dateSet.getValue().getTime(), dateSet.getValue().getDesc(), dateSet.getValue().getVendor(), dateSet.getValue().getAmount());
+                System.out.println(dateSet.getValue().toString());
             }
         }
         scanner.nextLine();
@@ -76,10 +77,11 @@ public class ReportsFunctions {
             LocalDate today = LocalDate.now();
             int thisYear = today.getYear();
             if ((Integer.parseInt(splitDates[0])) == ((thisYear))) {
-                System.out.printf("Date: %S | Time: %S | Description: %S | Vendor: %S | Amount $%.2f\n", dateSet.getValue().getDate(), dateSet.getValue().getTime(), dateSet.getValue().getDesc(), dateSet.getValue().getVendor(), dateSet.getValue().getAmount());
+                System.out.println(dateSet.getValue().toString());
             }
         }
         System.out.println("Press 'X' when you're ready to return to the Reports menu");
+        scanner.nextLine();
         String exit = scanner.nextLine().toUpperCase().trim();
         if (exit.equals("X")) {
             System.out.println("Redirecting to Reports menu...");
@@ -97,7 +99,7 @@ public class ReportsFunctions {
             LocalDate today = LocalDate.now();
             int previousYear = today.getYear() - 1;
             if ((Integer.parseInt(splitDates[0])) == ((previousYear))) {
-                System.out.printf("Date: %S | Time: %S | Description: %S | Vendor: %S | Amount $%.2f\n", dateSet.getValue().getDate(), dateSet.getValue().getTime(), dateSet.getValue().getDesc(), dateSet.getValue().getVendor(), dateSet.getValue().getAmount());
+                System.out.println(dateSet.getValue().toString());
             }
         }
         scanner.nextLine();
@@ -116,11 +118,11 @@ public class ReportsFunctions {
         Scanner scan = new Scanner(System.in);
         System.out.println("Search your statements by vendor \n Please enter the vendor name for your search: ");
         String vendorSearch = scan.nextLine();
+        System.out.println("Here are the vendors matching your search value:");
         int i = 0;
         for(Map.Entry<String, Transaction> vendorList : transactionList.entrySet()) {
             if (vendorList.getValue().getVendor().equalsIgnoreCase(vendorSearch)) {
-                System.out.println("Here are the vendors matching your search value:");
-                System.out.printf("Date: %S | Time: %S | Description: %S | Vendor: %S | Amount $%.2f\n", vendorList.getValue().getDate(), vendorList.getValue().getTime(), vendorList.getValue().getDesc(), vendorList.getValue().getVendor(), vendorList.getValue().getAmount());
+                System.out.println(vendorList.getValue().toString());
                 i++;
             }
         }
@@ -130,15 +132,13 @@ public class ReportsFunctions {
             }
         System.out.println(" Press 'V' to start a new Vendor Search \n Press 'H' to return home");
         String exit = scan.nextLine().toUpperCase().trim();
-        if(exit.equals("V")) {
-            searchByVendor();
-        }
-        else if(exit.equals("H")) {
-            homeScreen();
-        }
-        else {
-            System.out.println("Sorry, didn't catch that. Try entering 'V' to start a new Vendor Search, or 'H' to Return Home");
-            searchByVendor();
-        }
+       switch(exit) {
+           case "V": searchByVendor();
+           case "H": scanner.nextLine();
+           homeScreen();
+           default:
+               System.out.println("I didn't catch that, I'll redirect you to the Vendor Search.");
+               searchByVendor();
+       }
     }
 }
