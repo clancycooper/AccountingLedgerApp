@@ -3,9 +3,9 @@ package com.pluralsight;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Map;
+import java.util.Scanner;
 
-import static com.pluralsight.AccountingLedgerApp.reportsScreen;
-import static com.pluralsight.AccountingLedgerApp.scanner;
+import static com.pluralsight.AccountingLedgerApp.*;
 import static com.pluralsight.Reader.transactionList;
 
 /*This is my ReportsFunctions class
@@ -109,6 +109,36 @@ public class ReportsFunctions {
         } else {
             System.out.println("Sorry, didn't catch that. Press 'X' to return to the Reports Menu");
             previousYear();
+        }
+    }
+
+    public static void searchByVendor() throws IOException {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Search your statements by vendor \n Please enter the vendor name for your search: ");
+        String vendorSearch = scan.nextLine();
+        int i = 0;
+        for(Map.Entry<String, Transaction> vendorList : transactionList.entrySet()) {
+            if (vendorList.getValue().getVendor().equalsIgnoreCase(vendorSearch)) {
+                System.out.println("Here are the vendors matching your search value:");
+                System.out.printf("Date: %S | Time: %S | Description: %S | Vendor: %S | Amount $%.2f\n", vendorList.getValue().getDate(), vendorList.getValue().getTime(), vendorList.getValue().getDesc(), vendorList.getValue().getVendor(), vendorList.getValue().getAmount());
+                i++;
+            }
+        }
+            if(i == 0) {
+                System.out.println("Sorry, we couldn't find a match for that vendor. Please try a new vendor search.");
+                searchByVendor();
+            }
+        System.out.println(" Press 'V' to start a new Vendor Search \n Press 'H' to return home");
+        String exit = scan.nextLine().toUpperCase().trim();
+        if(exit.equals("V")) {
+            searchByVendor();
+        }
+        else if(exit.equals("H")) {
+            homeScreen();
+        }
+        else {
+            System.out.println("Sorry, didn't catch that. Try entering 'V' to start a new Vendor Search, or 'H' to Return Home");
+            searchByVendor();
         }
     }
 }

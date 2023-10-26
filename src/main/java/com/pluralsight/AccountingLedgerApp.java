@@ -54,13 +54,14 @@ public class AccountingLedgerApp {
 
     public static void ledgerScreen() throws IOException {
         System.out.println("Welcome to your Ledger, which transaction history would you like to view?");
-        System.out.println(" A) Display all transactions \n D) Display all deposits \n P) Display payment history \n R) Search my Reports");
+        System.out.println(" A) Display all transactions \n D) Display all deposits \n P) Display payment history \n R) Search my Reports \n H) Return Home");
         String clancysStatements = scanner.nextLine().toUpperCase().trim();
         switch(clancysStatements) {
             case "A": displayAll();
             case "D": displayDeposits();
             case "P": displayPayments();
             case "R": reportsScreen();
+            case "H": homeScreen();
             default:
                 System.out.println("I'm having a hard time finding what you're looking for. Please try again, make sure your response is A, D, P, or R.");
                 ledgerScreen();
@@ -76,7 +77,7 @@ public class AccountingLedgerApp {
             case 2: previousMonth();
             case 3: yearToDate();
             case 4: previousYear();
-            case 5: //Search by Vendor
+            case 5: searchByVendor();
             case 0: homeScreen();
             default:
                 System.out.println("I'm having a hard time finding what you're looking for. Please try again, make sure your response is 1, 2, 3, 4, 5, or 0");
