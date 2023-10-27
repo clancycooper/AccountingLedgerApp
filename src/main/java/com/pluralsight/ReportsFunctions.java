@@ -31,7 +31,6 @@ public class ReportsFunctions {
             }
         }
         System.out.println("Press 'X' when you're ready to return to the Reports menu");
-        scanner.nextLine();
         String exit = scanner.nextLine().toUpperCase().trim();
         if (exit.equals("X")) {
             System.out.println("Redirecting to Reports menu...");
@@ -58,7 +57,6 @@ public class ReportsFunctions {
                 System.out.println(dateSet.getValue().toString());
             }
         }
-        scanner.nextLine();
         System.out.println("Press 'X' when you're ready to return to the Reports menu");
         String exit = scanner.nextLine().toUpperCase().trim();
         if (exit.equals("X")) {
@@ -81,7 +79,6 @@ public class ReportsFunctions {
             }
         }
         System.out.println("Press 'X' when you're ready to return to the Reports menu");
-        scanner.nextLine();
         String exit = scanner.nextLine().toUpperCase().trim();
         if (exit.equals("X")) {
             System.out.println("Redirecting to Reports menu...");
@@ -102,7 +99,6 @@ public class ReportsFunctions {
                 System.out.println(dateSet.getValue().toString());
             }
         }
-        scanner.nextLine();
         System.out.println("Press 'X' when you're ready to return to the Reports menu");
         String exit = scanner.nextLine().toUpperCase().trim();
         if (exit.equals("X")) {
@@ -134,8 +130,7 @@ public class ReportsFunctions {
         String exit = scan.nextLine().toUpperCase().trim();
        switch(exit) {
            case "V": searchByVendor();
-           case "H": scanner.nextLine();
-           homeScreen();
+           case "H": homeScreen();
            default:
                System.out.println("I didn't catch that, I'll redirect you to the Vendor Search.");
                searchByVendor();

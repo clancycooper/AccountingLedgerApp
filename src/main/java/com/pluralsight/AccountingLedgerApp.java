@@ -72,6 +72,7 @@ public class AccountingLedgerApp {
         System.out.println("Welcome to your Reports, how would you like to view your statements?");
         System.out.println(" 1) Month to Date \n 2) Previous Month \n 3) Year to Date \n 4) Previous Year \n 5) Search by Vendor \n 0) Return Home");
         int clancysReports = scanner.nextInt();
+        scanner.nextLine();
         switch(clancysReports) {
             case 1: monthToDate();
             case 2: previousMonth();
