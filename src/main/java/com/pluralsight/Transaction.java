@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 /*This is the Transaction class
 Serves as a way to get and set date|time|description|vendor|amount
  */
+@SuppressWarnings({"FieldMayBeFinal", "unused"})
 public class Transaction {
 
     private String date;
@@ -24,40 +25,19 @@ public class Transaction {
         return date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public String getTime() {
         return time;
     }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
     public String getDesc() {
         return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
     }
 
     public String getVendor() {
         return vendor;
     }
 
-    public void setVendor(String vendor) {
-        this.vendor = vendor;
-    }
-
     public float getAmount() {
         return amount;
-    }
-
-    public void setAmount(float amount) {
-        this.amount = amount;
     }
 
     @Override

@@ -7,9 +7,9 @@ import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
 
 import static com.pluralsight.AccountingLedgerApp.homeScreen;
+import static com.pluralsight.AccountingLedgerApp.scanner;
 
 /*This is my HomeFunctions class
 Here you'll find the following methods:
@@ -18,7 +18,7 @@ makePayment(); - Allows user to notate payments from their account into transact
  */
 
 public class HomeFunctions {
-    public static Scanner scanner = new Scanner(System.in);
+
     public static DecimalFormat df = new DecimalFormat("0.00");
     public static DateTimeFormatter hms = DateTimeFormatter.ofPattern("HH:mm:ss");
 

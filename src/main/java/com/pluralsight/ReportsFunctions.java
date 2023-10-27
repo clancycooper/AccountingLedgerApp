@@ -18,6 +18,8 @@ searchByVendor(); -Should have an additional "return home" option
  */
 public class ReportsFunctions {
 
+    public static Scanner scan = new Scanner(System.in);
+
     public static void monthToDate() throws IOException {
         //[0] - Year, [1] - Month, [2] - Day
         System.out.println("Here are your Month to Date statements:");
@@ -31,7 +33,7 @@ public class ReportsFunctions {
             }
         }
         System.out.println("Press 'X' when you're ready to return to the Reports menu");
-        String exit = scanner.nextLine().toUpperCase().trim();
+        String exit = scan.nextLine().toUpperCase().trim();
         if (exit.equals("X")) {
             System.out.println("Redirecting to Reports menu...");
             reportsScreen();
@@ -58,7 +60,7 @@ public class ReportsFunctions {
             }
         }
         System.out.println("Press 'X' when you're ready to return to the Reports menu");
-        String exit = scanner.nextLine().toUpperCase().trim();
+        String exit = scan.nextLine().toUpperCase().trim();
         if (exit.equals("X")) {
             System.out.println("Redirecting to Reports menu...");
             reportsScreen();
@@ -79,7 +81,7 @@ public class ReportsFunctions {
             }
         }
         System.out.println("Press 'X' when you're ready to return to the Reports menu");
-        String exit = scanner.nextLine().toUpperCase().trim();
+        String exit = scan.nextLine().toUpperCase().trim();
         if (exit.equals("X")) {
             System.out.println("Redirecting to Reports menu...");
             reportsScreen();
@@ -100,7 +102,7 @@ public class ReportsFunctions {
             }
         }
         System.out.println("Press 'X' when you're ready to return to the Reports menu");
-        String exit = scanner.nextLine().toUpperCase().trim();
+        String exit = scan.nextLine().toUpperCase().trim();
         if (exit.equals("X")) {
             System.out.println("Redirecting to Reports menu...");
             reportsScreen();
@@ -111,9 +113,8 @@ public class ReportsFunctions {
     }
 
     public static void searchByVendor() throws IOException {
-        Scanner scan = new Scanner(System.in);
         System.out.println("Search your statements by vendor \n Please enter the vendor name for your search: ");
-        String vendorSearch = scan.nextLine();
+        String vendorSearch = scanner.nextLine();
         System.out.println("Here are the vendors matching your search value:");
         int i = 0;
         for(Map.Entry<String, Transaction> vendorList : transactionList.entrySet()) {
@@ -127,11 +128,14 @@ public class ReportsFunctions {
                 searchByVendor();
             }
         System.out.println(" Press 'V' to start a new Vendor Search \n Press 'H' to return home");
-        String exit = scan.nextLine().toUpperCase().trim();
-       switch(exit) {
-           case "V": searchByVendor();
-           case "H": homeScreen();
-           default:
+        String exitMenu = scan.next().toUpperCase().trim();
+       if(exitMenu.contains("V")) {
+           searchByVendor();
+       }
+       if(exitMenu.contains("H")) {
+            homeScreen();
+        }
+        else {
                System.out.println("I didn't catch that, I'll redirect you to the Vendor Search.");
                searchByVendor();
        }

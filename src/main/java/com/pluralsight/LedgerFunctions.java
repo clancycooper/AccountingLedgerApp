@@ -15,8 +15,6 @@ displayPayments();
 
 public class LedgerFunctions {
 
-    public static Scanner scanner = new Scanner(System.in);
-
     public static void displayAll() throws IOException {
         System.out.println("All Transaction History:");
         for (Map.Entry<String, Transaction> trans : transactionList.entrySet()) {
@@ -51,7 +49,6 @@ public class LedgerFunctions {
         }
     }
 
-
     public static void displayPayments() throws IOException {
         System.out.println("All Payment History:");
         for (Map.Entry<String, Transaction> trans : transactionList.entrySet()) {
@@ -59,14 +56,14 @@ public class LedgerFunctions {
                 System.out.println(trans.getValue().toString());
             }
         }
-                System.out.println("Press 'X' when you're ready to return to the Ledger menu");
-                String exit = scanner.nextLine().toUpperCase().trim();
-                if (exit.equals("X")) {
-                    System.out.println("Redirecting to Ledger menu...");
-                    ledgerScreen();
-                } else {
-                    System.out.println("Sorry, didn't catch that. Press 'X' to return to the Ledger Menu");
-                    displayPayments();
-                }
-            }
+        System.out.println("Press 'X' when you're ready to return to the Ledger menu");
+        String exit = scanner.nextLine().toUpperCase().trim();
+        if (exit.equals("X")) {
+            System.out.println("Redirecting to Ledger menu...");
+            ledgerScreen();
+        } else {
+            System.out.println("Sorry, didn't catch that. Press 'X' to return to the Ledger Menu");
+            displayPayments();
         }
+    }
+}

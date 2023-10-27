@@ -11,13 +11,10 @@ When launched, my main method will start the readTransactions method automatical
 public class Reader {
     public static HashMap<String, Transaction> transactionList = new HashMap<>();
 
-    public static void readTransactions() {
-        try {
-            //Declaring readers/String
+    public static void readTransactions() throws IOException {
             FileReader fileReader = new FileReader("src/main/resources/transactions.csv");
             BufferedReader bufReader = new BufferedReader(fileReader);
             String csv;
-            //While loop for reading and adding products to Hashmap
             while ((csv = bufReader.readLine()) != null) {
                 String[] transactionLedger = csv.split("\\|");
                 if(!transactionLedger[0].contains("date")) {
@@ -33,9 +30,5 @@ public class Reader {
             homeScreen();
             fileReader.close();
             bufReader.close();
-        } catch (IOException e) {
-            System.out.println("Sorry, there was an IOException!");
-            e.printStackTrace();
-        }
     }
 }
